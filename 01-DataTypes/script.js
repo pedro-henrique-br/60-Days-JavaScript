@@ -88,3 +88,8 @@ console.log(Math.ceil(2.2))
 
 
 // Todo Symbol
+
+const symbol1 = Symbol("foo")
+const symbol2 = Symbol("foo")
+
+console.log(symbol1 === symbol2)
