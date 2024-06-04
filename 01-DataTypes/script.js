@@ -82,9 +82,18 @@ console.log((Math.random() * number).toFixed(0))
 
 console.log(Math.ceil(2.2))
 
-// Todo Boolean
+// TODO Boolean
 
+// Boolean is a logical data type that can have only the values true or false
 
+console.log("João" && "João" ? "Seu nome é João" : "Tente novamente")
+console.log(typeof false)
+console.log(typeof true)
 
+if("Chico"){
+  console.log("Chico")
+} else {
+  console.log("Tente novamente")
+}
 
-// Todo Symbol
+// TODO Symbol
