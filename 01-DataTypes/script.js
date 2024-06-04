@@ -96,4 +96,13 @@ if("Chico"){
   console.log("Tente novamente")
 }
 
+<<<<<<< HEAD
 // TODO Symbol
+=======
+// Todo Symbol
+
+const symbol1 = Symbol("foo")
+const symbol2 = Symbol("foo")
+
+console.log(symbol1 === symbol2)
+>>>>>>> 42664f519b2e93178fc3d38d3c10c4761a5c3a0f
