@@ -39,6 +39,58 @@ console.log(index === -1 ? ("This branch exist") : ("Try again"))
 
 const emptyArray = []
 
-const count = [1,2,3,4,5]
+const count = [1,2,3,4,5,6,7]
 
-console.log(count.slice(1, 4))
+console.log(count[0], count[3], count[6])
+
+const mixedDataTypes = ["Hello Friend", 0, "MRX", false, undefined]
+
+const itCompanies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle", "Amazon"]
+
+console.log(itCompanies.length)
+console.log(itCompanies[0], itCompanies[3], itCompanies[6])
+
+itCompanies.map((companie) => console.log(companie))
+itCompanies.map((companie) => console.log(companie.toUpperCase()))
+itCompanies[5] = "Oracle and Amazon"
+itCompanies.pop()
+console.log(itCompanies.join(", ")+ " are big it companies")
+
+console.log(itCompanies.includes("Instagram") ? ("The company exist") : ("Company not found"))
+console.log(itCompanies.includes("Google") ? ("The company exist") : ("Company not found"))
+
+console.log(itCompanies.filter((companie) => companie.includes("oo") ? (companie) : ("")))
+console.log(itCompanies.sort())
+console.log(itCompanies.reverse().slice(3,6))
+console.log(itCompanies.reverse().slice(3))
+itCompanies.shift()
+console.log(itCompanies)
+console.log(itCompanies.slice(3,4))
+itCompanies.pop()
+console.log(itCompanies)
+itCompanies.splice(0,4)
+console.log(itCompanies)
+itCompanies.push("Hotmart")
+console.log(itCompanies)
+
+console.log(countries.length)
+countries.push("United kingdown")
+console.log(countries)
+
+const countries1 = countries.slice(0,3)
+const countries2 = countries.slice(3)
+
+console.log(countries1)
+console.log(countries2)
+
+const countriesArray = new Array(countries1, countries2)
+
+console.log(countriesArray)
+
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+
+// ages.sort()
+// Math.min(ages)
+// Math.max(ages)
+// // avarage
+// console.log(Math.min(ages))
