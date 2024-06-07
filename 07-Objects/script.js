@@ -109,22 +109,148 @@ const users = {
   }
 }
 
+users.Pedro = new Object(users.Paul)
+users.Pedro.email = "pedroDev@gmail.com"
+users.Pedro.isLoggedIn = true
 
 const {Alex, Asab, Brook, Daniel, John, Thomas, Paul} = users
 
-const usersArray = [Alex, Asab, Brook, Daniel, John, Thomas, Paul]
+const usersArray = [Alex, Paul, Brook, Daniel, John, Thomas, Asab]
 
-const userWithMoreSkills = usersArray.map((user) => {
-  let skill = 0
-  for(let index = 0; user.skills.length > index; index++){
-    if(user.skills.length > index){
-      skill =+ user.skills.length
-      
+console.log(Object.assign(users))
+console.log(Object.values(users))
+console.log(Object.entries(users))
+console.log(Object.keys(users))
+
+const userWithMoreSkills = (usersArray) => {
+  let userWithManySkills = 0
+  for(let index = 0; index < usersArray.length; index++){
+    if(usersArray[index].skills.length > userWithManySkills){
+      userWithManySkills += usersArray[index].skills.length
     } else {
-      skill = 0
+      userWithManySkills = 0
     }
   }
-  return skill
-})
+  return userWithManySkills
+}
 
-console.log(userWithMoreSkills)
+console.log(userWithMoreSkills(usersArray))
+
+usersArray.find((user) => user.isLoggedIn === true ? (console.log(user.email + " " + "is logged in")) : (console.log(`${user.email} is not loged`)))
+
+const usersApp = [
+  {
+      _id: 'ab12ex',
+      username: 'Alex',
+      email: 'alex@alex.com',
+      password: '123123',
+      createdAt:'08/01/2020 9:00 AM',
+      isLoggedIn: false
+  },
+  {
+      _id: 'fg12cy',
+      username: 'Asab',
+      email: 'asab@asab.com',
+      password: '123456',
+      createdAt:'08/01/2020 9:30 AM',
+      isLoggedIn: true
+  },
+  {
+      _id: 'zwf8md',
+      username: 'Brook',
+      email: 'brook@brook.com',
+      password: '123111',
+      createdAt:'08/01/2020 9:45 AM',
+      isLoggedIn: true
+  },
+  {
+      _id: 'eefamr',
+      username: 'Martha',
+      email: 'martha@martha.com',
+      password: '123222',
+      createdAt:'08/01/2020 9:50 AM',
+      isLoggedIn: false
+  },
+  {
+      _id: 'ghderc',
+      username: 'Thomas',
+      email: 'thomas@thomas.com',
+      password: '123333',
+      createdAt:'08/01/2020 10:00 AM',
+      isLoggedIn: false
+  }
+  ];
+
+  const products = [
+{
+  _id: 'eedfcf',
+  name: 'mobile phone',
+  description: 'Huawei Honor',
+  price: 200,
+  ratings: [
+    { userId: 'fg12cy', rate: 5 },
+    { userId: 'zwf8md', rate: 4.5 }
+  ],
+  likes: []
+},
+{
+  _id: 'aegfal',
+  name: 'Laptop',
+  description: 'MacPro: System Darwin',
+  price: 2500,
+  ratings: [],
+  likes: ['fg12cy']
+},
+{
+  _id: 'hedfcg',
+  name: 'TV',
+  description: 'Smart TV:Procaster',
+  price: 400,
+  ratings: [{ userId: 'fg12cy', rate: 5 }],
+  likes: ['fg12cy']
+}
+]
+
+const newUser = {
+  _id: 'ab12ex',
+  username: 'Alex',
+  email: 'alex@alex.com',
+  password: '123123',
+  createdAt:'08/01/2020 9:00 AM',
+  isLoggedIn: false
+}
+
+const signUp = (newUser) => {
+  let isUserExist = false
+  for(let index = 0; usersApp.length > index; index ++){
+    if(Object.values(usersApp[index]).includes(newUser._id)){
+      isUserExist = true
+    } 
+  }
+  return isUserExist
+}
+
+console.log(signUp(newUser))
+
+const rateProduct = () => {
+  const ratings = products.map((product) => {
+    return product.ratings
+  })
+  return ratings
+}
+
+console.log(rateProduct())
+
+const likeProduct = () => {
+  const isLiked = false
+  for(let index = 0; products.length > index; index ++){
+    if(products[index].likes.length = 0){
+      isLiked = true
+    } else {
+      products[index].likes = "fg12cy"
+    }
+  }
+  console.log(products)
+}
+
+likeProduct()
