@@ -75,9 +75,13 @@ console.log((countries.every((country) => country.toLowerCase().includes("land")
 console.log(numbers.find((number) => number == 10))
 console.log(numbers.findIndex((number) => number === 3))
 
+
+console.log(numbers.reduce((number, currentValue) => currentValue + number))
 // Explain the difference between find and findIndex 
 // find instances test if any element in the array pass in the test implemented by a provided function
 // and the findIndex do the same, but return the index of the element in the passed array
 
 console.log(countries.find((country) => country.length === 5))
 console.log(countries.findIndex((country) => country.length === 5))
+
+console.log(products.map((product) => product.price).reduce((price, totalPrice) => price == "" ? (0) : (Number(totalPrice += price))))
