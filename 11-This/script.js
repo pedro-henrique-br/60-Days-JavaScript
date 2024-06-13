@@ -14,7 +14,7 @@ function isThisFunction () {
 
   console.log(eggs === this)
   console.log(this.document === document)
-  return this
+
 }
 
 console.log(isThisFunction())
