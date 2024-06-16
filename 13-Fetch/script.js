@@ -9,6 +9,7 @@ fetch(url)
 const content = "Hello World"
 const Header = new Headers()
 
+
 Header.append("Content-Type", content)
 console.log(Header)
 console.log(Header.has("Content-Type"))
