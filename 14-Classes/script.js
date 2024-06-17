@@ -84,6 +84,7 @@ class statistic {
     let index = 0
     while(index < age.length){
       if(age[index] >= max){
+        max = 0
         max += age[index]
       } else {
         max 
