@@ -62,5 +62,4 @@ window.onload = () => {
 const removeTodo = () => {
   console.log("clicked")
   localStorage.clear("to-do")
- 
 }
