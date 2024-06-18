@@ -28,11 +28,13 @@ const createTodo = (value) => {
 
   saveTodo();
 
-  for (let index = 3; index <= todoContainer.childNodes.length; index++) {
+  
+  for (let index = 3; index < todoContainer.childNodes.length; index++) {
     clearTodocontainer.children[0].children[0].textContent = `You have ${
       index - 3
-    } pending todo`;
-  }
+      } pending todo`;
+    todoContainer.childNodes[index].children[0].children[1].addEventListener("click", removeTodo)
+    }
 };
 
 const saveTodo = () => {
@@ -40,7 +42,6 @@ const saveTodo = () => {
   todoContainer.querySelectorAll("div.to-do-task").forEach((todo) => {
     todos.push(todo.childNodes[1].childNodes[1].textContent)
   })
-  console.log(todos)
   
   localStorage.setItem("todos", todos);
 };
@@ -51,10 +52,15 @@ const loadTodo = () => {
   if (content) {
     const todoArray = content.split(",")
     todoArray.map((todo) => createTodo(todo))
-  } else {
-  }
+  } 
 };
 
 window.onload = () => {
   loadTodo();
 };
+
+const removeTodo = () => {
+  console.log("clicked")
+  localStorage.clear("to-do")
+ 
+}
