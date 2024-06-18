@@ -2,36 +2,59 @@ const input = document.getElementById("input--field");
 const addButton = document.getElementById("sum--button");
 const todoContainer = document.getElementById("to-do--container");
 const removeButton = document.getElementById("remove--button");
-const clearTodocontainer = document.getElementById("to-do--container")
+const clearTodocontainer = document.getElementById("to-do--container");
 
 addButton.addEventListener("click", () => {
   const inputValue = input.value;
-  if(inputValue){
-    localStorage.setItem("to-do", inputValue);
-    createTodo(localStorage);
+  if (inputValue) {
+    createTodo(inputValue);
   }
   input.value = "";
 });
 
-const createTodo = (todo) => {
-  const todoString = localStorage.getItem("to-do");
+const createTodo = (value) => {
   let newTodo = document.createElement("div");
-  newTodo.className = "to-do-task"
+  newTodo.className = "to-do-task";
   newTodo.innerHTML = ` 
   <label class="to-do-task">
-  <h3>${todoString}</h3>
+  <h3>${value}</h3>
   <button id="remove--button">
   <img src="./assets/icons/thrashIcon.png" alt="remove Todo" />
   </button>
   </label>`;
-  todoContainer.appendChild(newTodo)
-  clearTodocontainer.style.display = "flex"
-  todoContainer.querySelectorAll("button#remove--button").forEach((button) => button.addEventListener("click", () => {
-    console.log(todoContainer.children.length - 1)
-  }))
-  for(let index = 3; index <= todoContainer.childNodes.length; index++){
-    clearTodocontainer.children[0].children[0].textContent = `You have ${index - 3} pending todo`
+
+  todoContainer.appendChild(newTodo);
+  clearTodocontainer.style.display = "flex";
+
+  saveTodo();
+
+  for (let index = 3; index <= todoContainer.childNodes.length; index++) {
+    clearTodocontainer.children[0].children[0].textContent = `You have ${
+      index - 3
+    } pending todo`;
   }
 };
 
+const saveTodo = () => {
+  const todos = []
+  todoContainer.querySelectorAll("div.to-do-task").forEach((todo) => {
+    todos.push(todo.childNodes[1].childNodes[1].textContent)
+  })
+  console.log(todos)
+  
+  localStorage.setItem("todos", todos);
+};
 
+
+const loadTodo = () => {
+  const content = localStorage.getItem("todos");
+  if (content) {
+    const todoArray = content.split(",")
+    todoArray.map((todo) => createTodo(todo))
+  } else {
+  }
+};
+
+window.onload = () => {
+  loadTodo();
+};
