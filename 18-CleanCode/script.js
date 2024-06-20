@@ -64,3 +64,32 @@ const processNames = (names) => {
 } 
 
 console.log(processNames(names))
+
+const userInfo = {
+  firstName: "Cipher",
+  lastName: "Anderson",
+  userId: "242sz",
+  userPassword: null, 
+}
+
+const getFullName = ({firstName, lastName}) => {
+  return `Hey ${firstName} you last name is ${lastName}?`
+}
+
+console.log(getFullName(userInfo))
+
+const getUserInfo = (userInfo) => {
+  const {firstName, lastName, userId, userPassword} = userInfo
+  return userId + " " + userPassword
+}
+
+console.log(getUserInfo(userInfo))
+
+const isUserLogged = ({ userId }, userPassword = "12ssz") => {
+  if( userId && userPassword ){
+    return `Welcome ${userId}`
+  }
+  return `try again`
+}
+
+console.log(isUserLogged(userInfo))
