@@ -13,11 +13,10 @@ addButton.addEventListener("click", () => {
 });
 
 let todoIndex = 0
+
 const createTodo = (value) => {
-  todoIndex++
   let newTodo = document.createElement("div");
-  newTodo.className = "to-do-task";
-  newTodo.id = `${todoIndex}`;
+  newTodo.className = "to-do-task--container";
   newTodo.innerHTML = ` 
   <label class="to-do-task">
   <h3>${value}</h3>
@@ -30,32 +29,47 @@ const createTodo = (value) => {
   todoContainer.appendChild(newTodo);
   clearTodocontainer.style.display = "flex";
 
-  saveTodo();
+  const todoLength = todoContainer.querySelectorAll("div.to-do-task--container").length
 
-  
-  todoContainer.querySelectorAll("div.to-do-task").forEach((todo, index) => {
-    todoContainer.querySelectorAll("div.to-do-task")[index].addEventListener("click", removeTodo)
-    clearTodocontainer.children[0].children[0].textContent = `You have ${index} pending todo`;
+  clearTodocontainer.style.display = "flex"
+  clearTodocontainer.children[0].children[0].textContent = `You have ${todoLength} pending todo`;
+  clearTodocontainer.children[0].children[1].addEventListener("click", clearAllTodos)
+
+  todoContainer.querySelectorAll("div.to-do-task--container").forEach((todo, index) => {
+    todoContainer.querySelectorAll("div.to-do-task--container")[index].addEventListener("click", () => removeTodo(todo))
   })
+
+  saveTodo();
 }
 
-const removeTodo = (e) => {
-  console.log("clicked", e.target.style.display = "none")
-  console.log(todoContainer.children[1].children[0].children[1].children[0] == e.target)
-  console.log(todoContainer.children[1].children[0].children[1].children[0])
-
-
-  const [...todos] = todoContainer.querySelectorAll("div.to-do-task")
-
-
-  localStorage.clear("todos", todos);
+const removeTodo = (todo) => {
+  const [...todos] = todoContainer.querySelectorAll("div.to-do-task--container")
+  let todoLength = todoContainer.childNodes.length - 3
+  todoLength -= 1
+  if(todos.includes(todo)){
+    todoContainer.removeChild(todo)
+    clearTodocontainer.children[0].children[0].textContent = `You have ${todoLength} pending todo`;
+    todoLength === 0 ? (clearTodocontainer.style.display = "none") : ("")
+    const todosArray = localStorage.getItem("todos")
+    const todosSplit = todosArray.split(",")
+    todosSplit.includes(todo.childNodes[1].children[0].textContent) ? (localStorage.setItem("todos", todo)) : ("")
+  }
 }
+
+const clearAllTodos = () => {
+  console.log("click")
+  localStorage.removeItem("todos")
+  todoContainer.querySelectorAll("div.to-do-task--container").forEach((todo) => todoContainer.removeChild(todo))
+  clearTodocontainer.style.display = `none`;
+}
+
 
 const saveTodo = () => {
   const todos = []
-  todoContainer.querySelectorAll("div.to-do-task").forEach((todo) => {
-    todos.push(todo.childNodes[1].childNodes[1].textContent)
-  })
+  todoContainer.querySelectorAll("div.to-do-task--container").forEach((todo, index) => {
+      todos.push(todo.childNodes[1].childNodes[1].textContent)
+    }
+  )
   
   localStorage.setItem("todos", todos);
 };
