@@ -12,16 +12,20 @@ addButton.addEventListener("click", () => {
   input.value = "";
 });
 
+let todoIndex = 0
 const createTodo = (value) => {
+  todoIndex++
   let newTodo = document.createElement("div");
   newTodo.className = "to-do-task";
+  newTodo.id = `${todoIndex}`;
   newTodo.innerHTML = ` 
   <label class="to-do-task">
   <h3>${value}</h3>
   <button id="remove--button">
   <img src="./assets/icons/thrashIcon.png" alt="remove Todo" />
   </button>
-  </label>`;
+  </label>
+ `;
 
   todoContainer.appendChild(newTodo);
   clearTodocontainer.style.display = "flex";
@@ -29,13 +33,23 @@ const createTodo = (value) => {
   saveTodo();
 
   
-  for (let index = 3; index < todoContainer.childNodes.length; index++) {
-    clearTodocontainer.children[0].children[0].textContent = `You have ${
-      index - 3
-      } pending todo`;
-    todoContainer.childNodes[index].children[0].children[1].addEventListener("click", removeTodo)
-    }
-};
+  todoContainer.querySelectorAll("div.to-do-task").forEach((todo, index) => {
+    todoContainer.querySelectorAll("div.to-do-task")[index].addEventListener("click", removeTodo)
+    clearTodocontainer.children[0].children[0].textContent = `You have ${index} pending todo`;
+  })
+}
+
+const removeTodo = (e) => {
+  console.log("clicked", e.target.style.display = "none")
+  console.log(todoContainer.children[1].children[0].children[1].children[0] == e.target)
+  console.log(todoContainer.children[1].children[0].children[1].children[0])
+
+
+  const [...todos] = todoContainer.querySelectorAll("div.to-do-task")
+
+
+  localStorage.clear("todos", todos);
+}
 
 const saveTodo = () => {
   const todos = []
@@ -59,7 +73,3 @@ window.onload = () => {
   loadTodo();
 };
 
-const removeTodo = () => {
-  console.log("clicked")
-  localStorage.clear("to-do")
-}
