@@ -52,12 +52,13 @@ const removeTodo = (todo) => {
     todoLength === 0 ? (clearTodocontainer.style.display = "none") : ("")
     const todosArray = localStorage.getItem("todos")
     const todosSplit = todosArray.split(",")
-    todosSplit.includes(todo.childNodes[1].children[0].textContent) ? (localStorage.setItem("todos", todo)) : ("")
+    console.log(todosSplit)
+    const todoString = todo.childNodes[1].childNodes[1].textContent
+    console.log(todosSplit.includes(todoString))
   }
-}
+  }
 
 const clearAllTodos = () => {
-  console.log("click")
   localStorage.removeItem("todos")
   todoContainer.querySelectorAll("div.to-do-task--container").forEach((todo) => todoContainer.removeChild(todo))
   clearTodocontainer.style.display = `none`;
