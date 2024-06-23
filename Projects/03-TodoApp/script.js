@@ -4,9 +4,17 @@ const todoContainer = document.getElementById("to-do--container");
 const removeButton = document.getElementById("remove--button");
 const clearTodocontainer = document.getElementById("to-do--container");
 
-addButton.addEventListener("click", () => {
+input.addEventListener("keydown", (e) => {
   const inputValue = input.value;
-  if (inputValue) {
+  if(inputValue && e.key === "Enter"){
+    createTodo(inputValue);
+    input.value = "";
+  }
+})
+
+addButton.addEventListener("click", (e) => {
+  const inputValue = input.value;
+  if(inputValue) {
     createTodo(inputValue);
   }
   input.value = "";
@@ -50,11 +58,7 @@ const removeTodo = (todo) => {
     todoContainer.removeChild(todo)
     clearTodocontainer.children[0].children[0].textContent = `You have ${todoLength} pending todo`;
     todoLength === 0 ? (clearTodocontainer.style.display = "none") : ("")
-    const todosArray = localStorage.getItem("todos")
-    const todosSplit = todosArray.split(",")
-    console.log(todosSplit)
-    const todoString = todo.childNodes[1].childNodes[1].textContent
-    console.log(todosSplit.includes(todoString))
+    saveTodo()
   }
   }
 
@@ -63,7 +67,6 @@ const clearAllTodos = () => {
   todoContainer.querySelectorAll("div.to-do-task--container").forEach((todo) => todoContainer.removeChild(todo))
   clearTodocontainer.style.display = `none`;
 }
-
 
 const saveTodo = () => {
   const todos = []
@@ -74,7 +77,6 @@ const saveTodo = () => {
   
   localStorage.setItem("todos", todos);
 };
-
 
 const loadTodo = () => {
   const content = localStorage.getItem("todos");
