@@ -57,13 +57,33 @@ const printUserInfo = () => {
 
   const userInfo = document.createElement("div")
   userInfo.className = "user-info"
-  userInfo.innerHTML = `
+  userInfo.innerHTML = 
+  `
   <h2>${description} ${challengeYear}</h2>
   <p>${challengeSubtitle}</p>
   <ul class="challenges">
   ${challenges.map((challenge) => {
-    return `<li>${challenge.name}<select><option selected>${challenge.topics[0]}</option>${challenge.topics.map((topic) => {return `<option>${topic}</option>`})}</select><p>${challenge.status}</p></li>`
-  })}
+    let backgroundColor = ""
+    const status = challenge.status
+    switch(status) {
+      case "Done":
+        backgroundColor = "#00dd0b"
+        break
+      case "Ongoing":
+        backgroundColor = "#fdd900"
+        break
+      case "Coming":
+        backgroundColor = "#aa0000"
+        break
+    }
+    return `<li style="background: ${backgroundColor}" class="challenge">${challenge.name}<select>${challenge.topics.map((topic) => {
+      return `<option>${topic}</option>`})}
+      </select><p>${challenge.status}</p></li>`
+  }).join("")}
+  </ul>
+  <ul>
+  <h3>KeyWords</h3>
+    ${keywords.map((keyWord) => `<li>${keyWord}</li>`).join("")}
   </ul>
   `
  
