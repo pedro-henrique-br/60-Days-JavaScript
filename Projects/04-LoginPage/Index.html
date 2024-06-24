@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login MMORPG</title>
+  <script src="./script.js" defer></script>
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+  
+  <form id="login-container"> 
+    <h1 id="title">Login</h1>
+    <label>
+      <input id="email-input" type="text" placeholder="Email or Username" required>
+    </label>
+    <label>
+      <input id="password-input" type="password" placeholder="Password" required>
+    </label>
+    <label id="user-container">
+      <div id="remeber-container"><p><input type="checkbox">Remember me</p></div>
+      <div><a href="#">Forgot Password?</a></div>
+    </label>
+    <button id="login-button">Login</button>
+      <p>Don't have an account yet?<a id="login" href="#">Register</a></p>
+  </form>
+
+  <div id="loader" class="loader"></div>
+
+  <form id="register-container"> 
+    <h1 id="title">Create account</h1>
+    <label>
+      <input id="email-input" type="text" placeholder="Email or Username" required>
+    </label>
+    <label>
+      <input id="username-input" type="text" placeholder="user name" required>
+    </label>
+    <label>
+      <input id="password-input" type="password" placeholder="Password" required>
+    </label>
+    <label>
+      <input id="password-input" type="password" placeholder="Confirm password" required>
+    </label>
+    <label id="user-container">
+      <div id="remeber-container"><p><input type="checkbox">Remember me</p></div>
+      <div><a href="#">Forgot Password?</a></div>
+    </label>
+    <button id="register-button">Create account</button>
+      <p>Already have an account yet?<a id="register" href="#">Login</a></p>
+  </form>
+  
+</body>
+</html>
