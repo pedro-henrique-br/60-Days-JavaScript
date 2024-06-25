@@ -1,5 +1,4 @@
-const users = () => {
-  const user = [
+  const users = [
     {
       name: "Pedro",
     },
@@ -7,7 +6,5 @@ const users = () => {
       name: "Junny",
     },
   ];
-  return user
-};
 
 export {users};
