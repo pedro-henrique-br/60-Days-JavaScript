@@ -1,0 +1,156 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  gap: 5vw;
+  display: flex;
+}
+
+#chartdiv {
+  align-self: center;
+  height: 300px;
+  width: 40vw;
+  margin-right: 100px;
+}
+
+/* SideBar */
+
+.sidebar-container {
+  height: 100vh;
+  width: 12vw;
+  min-width: 200px;
+  background: rgb(41,34,51);
+  background: linear-gradient(180deg, rgba(41,34,51,1) 0%, rgba(38,38,49,1) 100%); 
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 105vh;
+}
+
+.sidebar ul {
+  flex-wrap: nowrap;
+  margin-top: 15vh;
+  height: 25vh;
+  justify-content: space-around;
+  display: flex;
+}
+
+.sidebar ul li {
+  display: flex;
+  width: 12vw;
+  min-width: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar ul li img {
+  height: 26px;
+}
+
+.sidebar ul li a {
+  width: 100px;
+  text-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: #ffff;
+}
+
+.sidebar ul li a:hover {
+  transition: 0.1s;
+  color: #ffff;
+}
+
+.sidebar ul li a:focus {
+  transition: 0.1s;
+  color: #8F56BB;
+}
+
+.sidebar ul li:focus-within {
+  transition: 0.1s;
+  color: #8F56BB;
+  border-left: 4px solid #8F56BB;
+}
+
+.sidebar #logout-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.sidebar #logout-link a {
+  transition: 0.1s;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  color: #ff3a7c;
+}
+
+.sidebar #logout-link:focus-within {
+  border-left: 4px solid #ff3a7c;
+}
+
+/* DashBoard */
+
+.dashboard {
+  position: relative;
+  margin-top: 5vh;
+  gap: 50px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.card-container {
+  gap: 20px;
+  display: flex;
+}
+
+.card {
+  height: 200px;
+  min-width: 300px;
+  width: 16vw;
+}
+
+.card-body {
+  gap: 10px;
+  flex-wrap: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-wrap: nowrap;
+  min-width: 400px;
+}
+
+.card-body h1 {
+  font-size: 2em;
+}
+
+.card-icon {
+  height: 30px;
+  width: 30px;
+}
+
+.wallet {
+  background: #262631;
+  border-radius: 30%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
