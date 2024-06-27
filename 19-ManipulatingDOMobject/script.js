@@ -91,3 +91,17 @@ const printUserInfo = () => {
 }
 
 printUserInfo()
+
+const containerScrollHeigth = document.querySelector(".container-2").scrollHeight
+const button = document.getElementById("button")
+
+window.scroll({
+  top: 0,
+})
+
+button.addEventListener("click", () => { 
+  window.scrollTo({
+    top: containerScrollHeigth,
+    behavior: "smooth",
+  })
+})
