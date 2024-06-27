@@ -6,26 +6,28 @@
 }
 
 body {
+  background: #1a1a1a;
   overflow: hidden;
   gap: 5vw;
   display: flex;
+  color: #ffff;
 }
 
 #chartdiv {
-  align-self: center;
-  height: 300px;
-  width: 40vw;
-  margin-right: 100px;
+  display: none;
+  width: 550px;
+  height: 200px;
 }
 
 /* SideBar */
 
 .sidebar-container {
   height: 100vh;
-  width: 12vw;
+  width: 200px;
   min-width: 200px;
-  background: rgb(41,34,51);
-  background: linear-gradient(180deg, rgba(41,34,51,1) 0%, rgba(38,38,49,1) 100%); 
+  background: #1d1d1d;
+  border-right: 1px solid #ffffff27;
+  border-radius: 6px;
 }
 
 .sidebar {
@@ -47,8 +49,8 @@ body {
 
 .sidebar ul li {
   display: flex;
-  width: 12vw;
   min-width: 200px;
+  max-width: 200px;
   align-items: center;
   justify-content: center;
 }
@@ -106,7 +108,7 @@ body {
 .dashboard {
   position: relative;
   margin-top: 5vh;
-  gap: 50px;
+  gap: 20px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -120,12 +122,21 @@ body {
 }
 
 .card {
+  background: #1d1d1d;
+  border: 1px solid #ffffff27;
+  transition: 0.1s;
   height: 200px;
   min-width: 300px;
   width: 16vw;
 }
 
+.card:hover {
+  cursor: pointer;
+  box-shadow: #2b2b2b 4px 4px 6px;
+}
+
 .card-body {
+  color: #ffff;
   gap: 10px;
   flex-wrap: nowrap;
   display: flex;
@@ -154,3 +165,16 @@ body {
   align-items: center;
 }
 
+/* Aside */
+
+.aside-container {
+  display: flex;
+  align-self: flex-end;
+  height: 80vh;
+  min-width: 300px;
+  width: 400px;
+  border-radius: 8px;
+  background: #1d1d1d;
+  border: 1px solid #ffffff27;
+  margin: 0px 30px 0px 80px;
+}
