@@ -1,38 +1,69 @@
-am5.ready(function() {
+var options = {
+  series: [44, 55, 41, 17, 15],
+  chart: {
+  type: 'donut',
+},
 
-  // Create root element
-  // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-  var root = am5.Root.new("chartdiv");
-  
-  // Set themes
-  // https://www.amcharts.com/docs/v5/concepts/themes/
-  root.setThemes([
-    am5themes_Animated.new(root)
-  ]);
-  
-  
-  var chart = root.container.children.push(am5percent.PieChart.new(root, {
-    layout: root.verticalLayout
-  }));
-  
-  
-  var series = chart.series.push(am5percent.PieSeries.new(root, {
-    valueField: "value",
-    categoryField: "category"
-  }));
-  
-  series.data.setAll([
-    { value: 10, category: "entertainment" },
-    { value: 9, category: "clothes" },
-    { value: 6, category: "Piggy bank" },
-    { value: 5, category: "snack" },
-    { value: 4, category: "market" },
-    { value: 3, category: "college" },
-    { value: 1, category: "rent" },
-  ]);
-  
-  
-  // Play initial series animation
-  // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
-  series.appear(1000, 100);
-  }); 
+legend: {
+  show: true,
+  showForSingleSeries: false,
+  showForNullSeries: true,
+  showForZeroSeries: true,
+  position: 'right',
+  horizontalAlign: 'center', 
+  floating: false,
+  fontSize: '14px',
+  fontFamily: 'Helvetica, Arial',
+  fontWeight: 600,
+  formatter: undefined,
+  inverseOrder: false,
+  width: undefined,
+  height: undefined,
+  tooltipHoverFormatter: undefined,
+  customLegendItems: ["fruits", "car"],
+  offsetX: 0,
+  offsetY: 0,
+  labels: {
+      colors: "ffff",
+      useSeriesColors: false
+  },
+  markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: undefined,
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0
+  },
+  itemMargin: {
+      horizontal: 5,
+      vertical: 0
+  },
+  onItemClick: {
+      toggleDataSeries: true
+  },
+  onItemHover: {
+      highlightDataSeries: true
+  },
+}
+
+,
+responsive: [{
+  breakpoint: 480,
+  options: {
+    chart: {
+      width: 200
+    },
+    legend: {
+      position: 'bottom'
+    }
+  }
+}]
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
