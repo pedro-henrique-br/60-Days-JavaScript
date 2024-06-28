@@ -131,3 +131,12 @@ button.addEventListener("click", (e) => {
 })
 
 inputs.forEach((input) => input.value = "")
+
+const carsArray_1 = new Set (["civic", "supra", "corola", "civic eg", "gtr", "cross", "tracker", "camaro", "civic", "gtr"])
+const carsArray_2 = new Set (["gtr 2008"])
+
+for(const car of carsArray_1){
+  if(carsArray_2.has(car)){
+    console.log(car)
+  }
+}
